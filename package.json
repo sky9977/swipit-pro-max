@@ -1,0 +1,22 @@
+{
+  "name": "swipit-pro-max",
+  "version": "1.0.0",
+  "description": "SWIPIT — Premium Fintech Card Brand Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node -e \"console.log('Production build ready')\"",
+    "deploy:vercel": "npx vercel --prod",
+    "deploy:netlify": "npx netlify deploy --prod --dir=public"
+  },
+  "keywords": [
+    "fintech",
+    "card",
+    "swipit",
+    "landing-page",
+    "motion-design"
+  ],
+  "author": "SWIPIT",
+  "license": "UNLICENSED"
+}

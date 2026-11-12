@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SWIPIT — Your money. Your move.</title>
+  <meta name="description" content="Smarter payments. Seamless experiences. A card designed around you.">
+  <meta name="theme-color" content="#050507">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23050507'/%3E%3Cpath d='M24 64 L48 36 L64 52 L78 36' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='78' cy='36' r='5' fill='%2360a5fa'/%3E%3C/svg%3E">
+
+  <!-- Typography: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-black text-white antialiased">
+
+  <!-- =========================================================
+       NAVIGATION BAR (TRANSPARENT FLOATING NAV OVER HERO)
+       ========================================================= -->
+  <header id="siteHeader" class="nav-header">
+    <div class="nav-container">
+      <!-- Left: Minimal Logo Treatment -->
+      <a href="#hero" class="nav-logo" aria-label="SWIPIT Home">
+        <div class="logo-mark">
+          <svg viewBox="0 0 36 36" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="9" fill="url(#logoGrad)" />
+            <path d="M9 23L18 13L25 20L28 15" stroke="#FFFFFF" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="28" cy="15" r="2" fill="#60A5FA"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1F212A"/>
+                <stop offset="1" stop-color="#0A0B0E"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">SWIPIT</span>
+      </a>
+
+      <!-- Center: Nav Items -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#designed-differently" class="nav-link">Features</a></li>
+          <li><a href="#everything-in-one-place" class="nav-link">About</a></li>
+          <li><a href="#built-around-you" class="nav-link">Support</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Action Buttons -->
+      <div class="nav-actions">
+        <button type="button" class="btn-ghost nav-login-btn" id="loginBtn">Login</button>
+        <button type="button" class="btn-primary nav-cta-btn" id="navGetStartedBtn">Get Started</button>
+
+        <!-- Mobile Menu Toggle -->
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <nav class="mobile-nav">
+        <a href="#hero" class="mobile-link">Home</a>
+        <a href="#designed-differently" class="mobile-link">Features</a>
+        <a href="#everything-in-one-place" class="mobile-link">About</a>
+        <a href="#built-around-you" class="mobile-link">Support</a>
+        <div class="mobile-actions">
+          <button type="button" class="btn-ghost w-full" id="mobileLoginBtn">Login</button>
+          <button type="button" class="btn-primary w-full" id="mobileCtaBtn">Get Started</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         HERO SECTION — COMPLETE ANIMATED VIDEO & WIDESCREEN BACKDROP
+         ========================================================= -->
+    <section id="hero" class="hero-section">
+      <!-- LAYER 1: Custom Cinematic Widescreen Canvas -->
+      <div class="ambient-backdrop" aria-hidden="true">
+        <div class="ambient-glow ambient-glow-center"></div>
+        <div class="ambient-glow ambient-glow-top"></div>
+        <div class="ambient-texture"></div>
+      </div>
+
+      <!-- LAYER 2: Blurred Widescreen Video Background (Scaled, Blurred & Darkened) -->
+      <div class="blurred-video-wrapper" aria-hidden="true">
+        <video
+          id="blurredHeroVideo"
+          class="blurred-bg-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >
+          <source src="assets/swipit-card-hero.mp4" type="video/mp4">
+        </video>
+        <div class="blurred-video-overlay"></div>
+      </div>
+
+      <!-- LAYER 3: Original Video Stage (Complete Vertical Video Centered & Uncropped) -->
+      <div class="hero-stage">
+        <div class="hero-video-card-container" id="heroVideoContainer">
+          <video
+            id="heroVideo"
+            class="hero-video-main"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            aria-label="SWIPIT original card footage"
+          >
+            <!-- Exact Original MP4 Video -->
+            <source src="assets/swipit-card-hero.mp4" type="video/mp4">
+          </video>
+
+          <!-- Edge feathering vignette so no harsh rectangular edges exist -->
+          <div class="hero-video-feather" aria-hidden="true"></div>
+
+          <!-- PART 2: Perspective-aware SWIPIT Branding Overlay on Card -->
+          <div class="card-brand-overlay" id="cardBrandOverlay" aria-hidden="true">
+            <div class="overlay-brand-badge">
+              <span class="overlay-brand-title">SWIPIT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAYER 4: Hero Content (Headline, Supporting Text & CTA Buttons) -->
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-in-down">
+          <span class="badge-dot"></span>
+          <span class="badge-text">SWIPIT TITANIUM</span>
+        </div>
+
+        <h1 class="hero-title animate-fade-in-up delay-1">
+          Your money.<br>
+          <span class="text-gradient">Your move.</span>
+        </h1>
+
+        <p class="hero-subtitle animate-fade-in-up delay-2">
+          Smarter payments. Seamless experiences. A card designed around you.
+        </p>
+
+        <div class="hero-cta-group animate-fade-in-up delay-3">
+          <button type="button" class="btn-primary btn-hero-primary" id="heroGetStartedBtn">
+            <span>GET STARTED</span>
+            <svg class="btn-arrow" viewBox="0 0 16 16" width="16" height="16" fill="none">
+              <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <a href="#designed-differently" class="btn-secondary btn-hero-secondary">
+            <span>EXPLORE SWIPIT</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Floating Video Utility (Audio & Playback Toggle) -->
+      <div class="hero-video-controls" id="videoControls">
+        <button type="button" class="glass-pill-btn" id="audioToggleBtn" title="Toggle Audio">
+          <svg id="soundMutedIcon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+          <svg id="soundUnmutedIcon" class="hidden" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+          <span id="audioStatusText">Muted</span>
+        </button>
+
+        <button type="button" class="glass-pill-btn" id="playPauseToggleBtn" title="Play or Pause Video">
+          <svg id="pauseIcon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="6" y="4" width="4" height="16"/>
+            <rect x="14" y="4" width="4" height="16"/>
+          </svg>
+          <svg id="playIcon" class="hidden" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#designed-differently" class="hero-scroll-indicator" aria-label="Scroll down">
+        <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+        <span class="scroll-text">EXPLORE</span>
+      </a>
+    </section>
+
+    <!-- =========================================================
+         SECTION 1: DESIGNED DIFFERENTLY
+         Showcase the SWIPIT card with a premium product presentation
+         ========================================================= -->
+    <section id="designed-differently" class="dark-section showcase-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">PHYSICAL CRAFT</span>
+          <h2 class="section-title">Designed differently.</h2>
+          <p class="section-desc">
+            Sculpted from a single block of aerospace-grade titanium. Calibrated to 18.5 grams with an unnumbered face for complete personal privacy.
+          </p>
+        </div>
+
+        <!-- Interactive 3D Card Presentation with Bespoke SWIPIT Branding -->
+        <div class="card-presentation-grid">
+          <div class="card-viewer-stage">
+            <div class="card-3d-wrapper" id="card3D">
+              <div class="card-surface" id="cardSurface">
+                <div class="card-glare" id="cardGlare"></div>
+                <div class="card-inner-layout">
+                  <div class="card-row-top">
+                    <div class="card-emv-chip">
+                      <svg viewBox="0 0 46 34" width="44" height="32" fill="none">
+                        <rect width="46" height="34" rx="5" fill="#C5A059" fill-opacity="0.22" stroke="#C5A059" stroke-width="1.2"/>
+                        <path d="M0 17H46M23 0V34M11 0V34M35 0V34" stroke="#C5A059" stroke-opacity="0.35" stroke-width="1"/>
+                      </svg>
+                    </div>
+                    <div class="card-nfc-symbol">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8.5 16.5a5 5 0 0 1 0-9M12 19a9 9 0 0 0 0-14M15.5 21.5a13 13 0 0 0 0-19" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="card-row-middle">
+                    <div class="card-embossed-brand">SWIPIT</div>
+                    <span class="card-finish-tag" id="cardFinishTag">TITANIUM EDITION</span>
+                  </div>
+
+                  <div class="card-row-bottom">
+                    <div class="card-spec-holder">
+                      <span class="spec-label">MEMBER</span>
+                      <span class="spec-name">ALEXANDER VANE</span>
+                    </div>
+                    <div class="card-hologram">
+                      <span class="holo-circle holo-1"></span>
+                      <span class="holo-circle holo-2"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Material & Finish Switcher -->
+            <div class="finish-selector">
+              <button type="button" class="finish-btn active" data-finish="titanium">
+                <span class="finish-dot dot-titanium"></span>
+                <span>Titanium</span>
+              </button>
+              <button type="button" class="finish-btn" data-finish="obsidian">
+                <span class="finish-dot dot-obsidian"></span>
+                <span>Obsidian Black</span>
+              </button>
+              <button type="button" class="finish-btn" data-finish="platinum">
+                <span class="finish-dot dot-platinum"></span>
+                <span>Cyber Platinum</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Specifications Column -->
+          <div class="spec-details-column">
+            <div class="spec-card">
+              <span class="spec-number">18.5g</span>
+              <h3 class="spec-heading">Aerospace Titanium Core</h3>
+              <p class="spec-text">Weighted perfectly for a reassuring in-hand feel. Resistant to corrosion, bending, and everyday wear.</p>
+            </div>
+            <div class="spec-card">
+              <span class="spec-number">Zero</span>
+              <h3 class="spec-heading">Numberless Surface</h3>
+              <p class="spec-text">Your card number, expiration date, and CVV are never exposed on the physical face, keeping prying eyes out.</p>
+            </div>
+            <div class="spec-card">
+              <span class="spec-number">Sub-Second</span>
+              <h3 class="spec-heading">Precision Contactless</h3>
+              <p class="spec-text">Dual-tuned NFC coils embedded directly inside the solid alloy ensure instant authorization at any terminal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2: EVERYTHING IN ONE PLACE
+         Introduce the core card and money-management experience
+         ========================================================= -->
+    <section id="everything-in-one-place" class="dark-section money-management-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">MONEY MANAGEMENT</span>
+          <h2 class="section-title">Everything in one place.</h2>
+          <p class="section-desc">
+            A unified command center for all your liquid balances, transactions, and card controls.
+          </p>
+        </div>
+
+        <div class="experience-showcase-grid">
+          <!-- Live Telemetry Card -->
+          <div class="feature-panel feature-panel-large">
+            <div class="panel-glow"></div>
+            <div class="panel-content">
+              <span class="panel-tag">REAL-TIME TELEMETRY</span>
+              <h3 class="panel-title">Instant visibility the moment you swipe.</h3>
+              <p class="panel-description">
+                Transactions appear with zero latency. Categorized automatically with rich merchant details, exchange conversions, and dynamic receipts.
+              </p>
+
+              <!-- Mockup UI Feed -->
+              <div class="app-feed-preview">
+                <div class="feed-item">
+                  <div class="feed-icon">☕</div>
+                  <div class="feed-details">
+                    <span class="feed-title">Artisan Roasters</span>
+                    <span class="feed-category">Food & Dining • Just now</span>
+                  </div>
+                  <span class="feed-amount">-$4.80</span>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-icon">✈️</div>
+                  <div class="feed-details">
+                    <span class="feed-title">Tokyo Express Lines</span>
+                    <span class="feed-category">Travel • Interbank FX</span>
+                  </div>
+                  <span class="feed-amount">-$28.40</span>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-icon">💼</div>
+                  <div class="feed-details">
+                    <span class="feed-title">Direct Deposit Allocation</span>
+                    <span class="feed-category">Auto-Vault • Today</span>
+                  </div>
+                  <span class="feed-amount positive">+$2,450.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Currency Vault Card -->
+          <div class="feature-panel">
+            <div class="panel-glow"></div>
+            <div class="panel-content">
+              <span class="panel-tag">GLOBAL BORDERLESS</span>
+              <h3 class="panel-title">Hold and spend across currencies.</h3>
+              <p class="panel-description">
+                Seamless multi-currency support with real-time conversion rates. No inflated weekend spreads.
+              </p>
+              <div class="currency-pills-row">
+                <span class="curr-pill">USD</span>
+                <span class="curr-pill">EUR</span>
+                <span class="curr-pill">GBP</span>
+                <span class="curr-pill">JPY</span>
+                <span class="curr-pill">+35 more</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instant Card Controls -->
+          <div class="feature-panel">
+            <div class="panel-glow"></div>
+            <div class="panel-content">
+              <span class="panel-tag">ABSOLUTE CONTROL</span>
+              <h3 class="panel-title">One-tap instant card lock.</h3>
+              <p class="panel-description">
+                Misplaced your titanium card? Freeze it instantly in the app with one toggle, and unfreeze just as effortlessly when found.
+              </p>
+              <div class="toggle-preview-box">
+                <span class="toggle-label">Physical Card Security</span>
+                <span class="toggle-pill active">ACTIVE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3: BUILT AROUND YOU
+         Showcase product features with minimal descriptions
+         ========================================================= -->
+    <section id="built-around-you" class="dark-section features-minimal-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">PURPOSE-BUILT</span>
+          <h2 class="section-title">Built around you.</h2>
+          <p class="section-desc">
+            Minimal, intelligent tools designed to give you frictionless control over your financial life.
+          </p>
+        </div>
+
+        <div class="minimal-grid">
+          <div class="minimal-card">
+            <div class="minimal-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="16" rx="3"/>
+                <path d="M7 8h10M7 12h6"/>
+              </svg>
+            </div>
+            <h3 class="minimal-heading">Disposable Virtual Cards</h3>
+            <p class="minimal-copy">Create single-use virtual card numbers for online checkouts that self-destruct after purchase.</p>
+          </div>
+
+          <div class="minimal-card">
+            <div class="minimal-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3 class="minimal-heading">Dynamic Spending Limits</h3>
+            <p class="minimal-copy">Set custom monthly, daily, or per-transaction caps directly from your smartphone.</p>
+          </div>
+
+          <div class="minimal-card">
+            <div class="minimal-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+            </div>
+            <h3 class="minimal-heading">Intelligent Alerting</h3>
+            <p class="minimal-copy">Sub-second push notifications ensure you remain informed on every single charge in real time.</p>
+          </div>
+
+          <div class="minimal-card">
+            <div class="minimal-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <h3 class="minimal-heading">Automated Allocation</h3>
+            <p class="minimal-copy">Route incoming deposits directly into dedicated custom vaults and savings goals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4: FINAL CTA
+         Headline: "Make your next move with SWIPIT."
+         Button: "GET STARTED"
+         ========================================================= -->
+    <section class="dark-section cta-final-section">
+      <div class="section-container">
+        <div class="cta-banner-card">
+          <div class="cta-glow-backdrop" aria-hidden="true"></div>
+          <div class="cta-content">
+            <span class="section-eyebrow">RESERVE YOUR CARD</span>
+            <h2 class="cta-title">Make your next move with SWIPIT.</h2>
+            <p class="cta-subtitle">
+              Smarter payments. Seamless experiences. A card designed around you.
+            </p>
+
+            <form class="cta-form" id="signupForm" onsubmit="event.preventDefault();">
+              <div class="input-pill-wrapper">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  required
+                  class="cta-email-input"
+                  id="userEmailInput"
+                  aria-label="Email Address"
+                >
+                <button type="submit" class="btn-primary cta-submit-btn" id="ctaSubmitBtn">
+                  <span>GET STARTED</span>
+                </button>
+              </div>
+              <span class="cta-disclaimer">Early access • Instant invitation notice</span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="section-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-column">
+          <a href="#hero" class="nav-logo">
+            <div class="logo-mark">
+              <svg viewBox="0 0 36 36" width="24" height="24" fill="none">
+                <rect width="36" height="36" rx="9" fill="#1F212A"/>
+                <path d="M9 23L18 13L25 20L28 15" stroke="#FFFFFF" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="28" cy="15" r="2" fill="#60A5FA"/>
+              </svg>
+            </div>
+            <span class="logo-text">SWIPIT</span>
+          </a>
+          <p class="footer-summary">
+            Smarter payments. Seamless experiences. A card designed around you.
+          </p>
+        </div>
+
+        <div class="footer-nav-links">
+          <a href="#hero">Home</a>
+          <a href="#designed-differently">Features</a>
+          <a href="#everything-in-one-place">About</a>
+          <a href="#built-around-you">Support</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p class="footer-legal-placeholder">
+          © 2026 SWIPIT Technologies. All rights reserved. Product specifications, card finishes, and software features described herein represent current development targets and are subject to availability upon official release.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="toast-notification" role="status" aria-live="polite">
+    <div class="toast-content">
+      <span class="toast-icon">✨</span>
+      <span class="toast-message" id="toastMessage">Welcome to SWIPIT.</span>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
